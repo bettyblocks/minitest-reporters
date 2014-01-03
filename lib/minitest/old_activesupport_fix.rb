@@ -4,8 +4,6 @@ module ActiveSupport
   module Testing
     module SetupAndTeardown
       module ForMinitest
-        remove_method :run
-
         def before_setup
           super
           run_callbacks :setup
