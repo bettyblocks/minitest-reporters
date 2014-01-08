@@ -39,13 +39,13 @@ else
 
           # Setup test runner's MessageFactory
           set_message_factory(Rake::TeamCity::MessageFactory)
-          log_test_reporter_attached()
+          log_test_reporter_attached
 
           # Report tests count:
           if ::Rake::TeamCity.is_in_idea_mode
             log(@message_factory.create_tests_count(total_count))
           elsif ::Rake::TeamCity.is_in_buildserver_mode
-            log(@message_factory.create_progress_message("Starting.. (#{test_count} tests)"))
+            log(@message_factory.create_progress_message("Starting.. (#{total_count} tests)"))
           end
 
         end
@@ -55,8 +55,8 @@ else
 
           puts('Finished in %.5fs' % total_time)
           print('%d tests, %d assertions, ' % [count, assertions])
-          print(red { '%d failures, %d errors, ' } % [failures, errors])
-          print(yellow { '%d skips' } % skips)
+          print(red '%d failures, %d errors, ' % [failures, errors])
+          print(yellow '%d skips' % skips)
           puts
         end
 
